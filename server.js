@@ -193,6 +193,7 @@ function handlePushEvent (req, res) {
 function handleSubscribeEvent (req, res) {
     // Subscribe to all events
     subscriptions = [];
+    winston.info('body to ' + req.body);
     Object.keys(req.body.devices).forEach(function (property) {
         req.body.devices[property].forEach(function (device) {
             subscriptions.push(getTopicFor(device, property, TOPIC_COMMAND));
