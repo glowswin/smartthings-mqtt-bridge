@@ -378,6 +378,7 @@ async.series([
             }), handlePushEvent);
 
         // Subscribe event from SmartThings
+        try{
         app.post('/subscribe',
             expressJoi({
                 body: {
@@ -385,7 +386,9 @@ async.series([
                     callback: joi.string().required()
                 }
             }), handleSubscribeEvent);
-
+        }catch(ex){
+            winston.info('subscribe error');
+        }
         // Log all errors to disk
         app.use(expressWinston.errorLogger({
             transports: [
