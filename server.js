@@ -90,6 +90,7 @@ function loadSavedState () {
  */
 function saveState () {
     winston.info('Saving current state');
+    winston.info('sub'+subscriptions);
     jsonfile.writeFileSync(STATE_FILE, {
         subscriptions: subscriptions,
         callback: callback,
