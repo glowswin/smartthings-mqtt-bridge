@@ -351,7 +351,7 @@ async.series([
     },
     function setupApp (next) {
         winston.info('Configuring API');
-        try{
+        
         // Accept JSON
         app.use(bodyparser.json());
 
@@ -404,10 +404,7 @@ async.series([
             }
         });
 
-        app.listen(config.port, next);
-        }catch(ex){
-            winston.info('subscribe error');
-        }            
+        app.listen(config.port, next);         
     }
 ], function (error) {
     if (error) {
