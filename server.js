@@ -335,6 +335,7 @@ async.series([
         client = mqtt.connect(config.mqtt.host, config.mqtt);
         client.on('message', parseMQTTMessage);
         client.on('connect', function () {
+            winston.info('connected to mqtt');
             if (subscriptions.length > 0) {
                 client.subscribe(subscriptions);
             }
