@@ -166,6 +166,7 @@ function migrateState (version) {
  * @param  {Result}  res            Result Object
  */
 function handlePushEvent (req, res) {
+    winston.info('handle push');
     var topic = getTopicFor(req.body.name, req.body.type, TOPIC_READ_STATE),
         value = req.body.value;
 
@@ -193,6 +194,7 @@ function handlePushEvent (req, res) {
  */
 function handleSubscribeEvent (req, res) {
     // Subscribe to all events
+    winston.info('handle subscribe push');
     subscriptions = [];
     winston.info('body to ' + req.body);
     Object.keys(req.body.devices).forEach(function (property) {
